@@ -6,10 +6,27 @@ import Navigation from "./components/Navigation";
 import Cart from "./pages/Cart";
 import SingleProduct from "./pages/SingleProduct";
 import CreatePizza from './pages/CreatePizza';
+import { CardContext } from "./CardContext";
+import { useEffect, useState } from "react";
+
 
 function App() {
+  const [cart, setCart] = useState({});
+
+  useEffect(() => {
+    const cart = localStorage.getItem("cart");
+    setCart(JSON.parse(cart))
+  }, []);
+
+
+  useEffect(()=>{
+   localStorage.setItem("cart", JSON.stringify(cart));
+
+  },[cart]);
+
   return (
     <Router>
+            <CardContext.Provider value={{ cart:cart , setCart:setCart }}> 
             <Navigation />
             <Routes>
                 <Route path="/" element={<Home />} exact />
@@ -19,6 +36,7 @@ function App() {
                 <Route path="/cart" element={<Cart />} /> 
                 
             </Routes>
+            </CardContext.Provider>
     </Router>
   );
 }

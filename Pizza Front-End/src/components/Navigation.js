@@ -1,6 +1,9 @@
-import React from 'react'
+import React , {useContext}from 'react'
 import { Link } from 'react-router-dom'
+import { CardContext } from "../CardContext";
+
 const Navigation = () => {
+  const {cart}= useContext(CardContext);
 
     const CartStyle = {
         backgroundColor: '#F59E0D',
@@ -18,7 +21,7 @@ const Navigation = () => {
             <li className='ml-6'><Link to='/createpizza'>Add Pizza</Link></li>
             <li className='ml-6'><Link to='/cart'>
                 <div style={CartStyle}>
-                <span>10</span>
+                <span>{cart.totalItems}</span>
                 <img className='ml-2' src="/images/cart.png" alt="" />
                 </div>
                 </Link></li>

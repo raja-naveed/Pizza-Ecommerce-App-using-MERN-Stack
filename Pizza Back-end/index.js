@@ -62,6 +62,18 @@ app.get("/getData/:id", async (req, res) => {
     res.status(500).send(error.message);
   }
 });
+app.post("/getData/items", async (req, res) => {
+  let documents;
+        try {
+            documents = await Product.find({
+                _id: { $in: req.body._id },
+            }).select('-updatedAt -__v');
+        } catch (err) {
+            res.send(err)
+        }
+        console.log("data " , documents);
+        return res.json(documents);
+});
 
 
 app.listen(3001, () => {

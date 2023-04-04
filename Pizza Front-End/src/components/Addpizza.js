@@ -1,6 +1,8 @@
 import React from "react";
+// import { useNavigate } from "react-router-dom";
 
 const Addpizza = () => {
+  // const navigate = useNavigate();
 
     
   return (
@@ -55,8 +57,10 @@ const Addpizza = () => {
         </div>
         <button
           type="submit"
+          // onClick={() => navigate("/")}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
+          
           Add Pizza
         </button>
       </form>
