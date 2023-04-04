@@ -21,7 +21,7 @@ const Navigation = () => {
             <li className='ml-6'><Link to='/createpizza'>Add Pizza</Link></li>
             <li className='ml-6'><Link to='/cart'>
                 <div style={CartStyle}>
-                <span>{cart.totalItems}</span>
+                <span>{cart.totalItems? cart.totalItems: "0" }</span>
                 <img className='ml-2' src="/images/cart.png" alt="" />
                 </div>
                 </Link></li>

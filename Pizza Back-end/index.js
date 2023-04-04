@@ -65,7 +65,7 @@ app.get("/getData/:id", async (req, res) => {
 app.post("/getData/items", async (req, res) => {
   let documents;
         try {
-            documents = await Product.find({
+            documents = await Products.find({
                 _id: { $in: req.body._id },
             }).select('-updatedAt -__v');
         } catch (err) {
